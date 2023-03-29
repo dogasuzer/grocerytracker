@@ -32,7 +32,7 @@ const Header = ({ text, backgroundColor, icon }) => {
           {text}
         </BoldText>
         {icon == !false ? (
-          <TouchableOpacity style={{ marginLeft: 60 }}>
+          <TouchableOpacity style={{ marginLeft: 100 }}>
             <EditImage width={40} height={40} color={"white"} />
           </TouchableOpacity>
         ) : null}
