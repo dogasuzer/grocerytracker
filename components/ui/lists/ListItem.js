@@ -16,25 +16,24 @@ const ListItem = ({ item }) => {
     <View
       style={{
         flexDirection: "row",
-        justifyContent: "space-evenly",
       }}
     >
       <TouchableOpacity onPress={onPressHandler}>
         <BoldText
-          style={{ margin: 20, color: COLORS.primary }}
+          style={{ margin: 20, color: COLORS.primary, width: 110 }}
           key={Math.random() * 1000}
         >
           {item.listname}
         </BoldText>
       </TouchableOpacity>
       <BoldText
-        style={{ margin: 20, color: COLORS.gray100 }}
+        style={{ margin: 20, color: COLORS.gray100, width: 60 }}
         key={Math.random() * 1000}
       >
         {item.totalitem}
       </BoldText>
       <BoldText
-        style={{ margin: 20, color: COLORS.gray100 }}
+        style={{ margin: 20, color: COLORS.gray100, width: 80 }}
         key={Math.random() * 1000}
       >
         {item.registration}

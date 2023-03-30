@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: "white",
     alignItems: "center",
-    elevation: 7,
+    elevation: 2,
   },
   label: {
     fontSize: 20,

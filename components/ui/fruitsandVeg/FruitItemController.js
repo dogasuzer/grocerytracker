@@ -5,10 +5,15 @@ import ShopIcon from "../../../assets/icons/bag-outline.svg";
 
 const FruitItemController = () => {
   const [counter, setCounter] = useState(1000);
+  const [isOnCart, setIsOnCart] = useState([false, 0]);
   const incrementCounter = () => setCounter(counter + 100);
   let decrementCounter = () => setCounter(counter - 100);
   if (counter <= 0) {
     decrementCounter = () => setCounter(1000);
+  }
+  function addToCart() {
+    setIsOnCart([true, counter]);
+    console.log(isOnCart);
   }
   return (
     <View style={styles.controllercontainer}>
@@ -28,6 +33,7 @@ const FruitItemController = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity
+        onPress={addToCart}
         style={{
           width: 35,
           height: 35,
@@ -35,6 +41,7 @@ const FruitItemController = () => {
           borderRadius: 20,
           justifyContent: "center",
           alignItems: "center",
+          marginLeft: 5,
         }}
       >
         <ShopIcon width={20} height={20} color={"white"} />
@@ -66,6 +73,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     maxHeight: 40,
     width: 160,
-    justifyContent: "space-evenly",
   },
 });
