@@ -10,7 +10,7 @@ const COLORS = {
   gray50: "#FAF7F7",
   gray100: "#A7A3A3",
   gray200: "#E5E5E5",
-
+  purple100: "#B397BA",
   gray500: "#565555",
   error: "#ffc6c6",
   background: "#FFFFFF",
