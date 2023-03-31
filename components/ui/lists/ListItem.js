@@ -20,7 +20,7 @@ const ListItem = ({ item }) => {
     >
       <TouchableOpacity onPress={onPressHandler}>
         <BoldText
-          style={{ margin: 20, color: COLORS.primary, width: 110 }}
+          style={{ margin: 20, color: COLORS.secondary200, width: 110 }}
           key={Math.random() * 1000}
         >
           {item.listname}

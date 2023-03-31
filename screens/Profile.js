@@ -11,10 +11,8 @@ const Profile = () => {
     <View
       style={{ justifyContent: "center", alignItems: "center", height: "100%" }}
     >
-      <BoldText
+      <View
         style={{
-          fontSize: 90,
-          color: "white",
           backgroundColor: COLORS.secondary200,
           width: 120,
           height: 120,
@@ -24,8 +22,15 @@ const Profile = () => {
           marginBottom: 20,
         }}
       >
-        D
-      </BoldText>
+        <BoldText
+          style={{
+            fontSize: 90,
+            color: "white",
+          }}
+        >
+          {name[0].toUpperCase()}
+        </BoldText>
+      </View>
       <BoldText style={{ fontSize: 30 }}>{name}</BoldText>
       <BoldText style={{ color: COLORS.gray100, fontSize: 17, marginTop: 10 }}>
         {email}{" "}
