@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import ListItem from "../components/ui/lists/ListItem";
 import { useNavigation } from "@react-navigation/native";
@@ -7,6 +7,7 @@ import COLORS from "../components/ui/colors";
 import MediumText from "../components/ui/customTexts/MediumText";
 import { ScrollView } from "react-native";
 import BoldText from "../components/ui/customTexts/BoldText";
+import CreateGroceryList from "./CreateGroceryList";
 
 const Lists = () => {
   const dummyListLists = [
@@ -33,7 +34,7 @@ const Lists = () => {
   ];
 
   return (
-    <>
+    <View style={{ backgroundColor: "white", height: "100%" }}>
       <Header
         text={"MyLists"}
         backgroundColor={COLORS.secondary300}
@@ -50,16 +51,19 @@ const Lists = () => {
           margin: 10,
         }}
       >
+        <CreateGroceryList />
         {dummyListLists !== undefined || typeof listLists !== "undefined"
           ? dummyListLists.map((item) => {
-              return <ListItem item={item} />;
+              return (
+                <>
+                  <ListItem item={item} />
+                  <View style={styles.lineStyle} />
+                </>
+              );
             })
           : null}
-        <View style={{ alignItems: "center" }}>
-          <BoldText>end of lists</BoldText>
-        </View>
       </ScrollView>
-    </>
+    </View>
   );
 };
 
@@ -77,5 +81,12 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 20,
     color: COLORS.gray500,
+  },
+  lineStyle: {
+    borderWidth: 0.2,
+    width: "90%",
+    borderColor: "#D0CFCF",
+    margin: 10,
+    elevation: 1,
   },
 });
