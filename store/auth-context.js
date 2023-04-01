@@ -7,26 +7,33 @@ export const AuthContext = createContext({
   isAuthenticated: false,
   authenticate: (token) => {},
   logout: () => {},
+  username: "",
+  getUsername: () => {},
 });
 
 function AuthContextProvider({ children }) {
   const [authToken, setAuthToken] = useState();
+  const [username, setUsername] = useState();
 
-  function authenticate(token) {
+  async function authenticate(token) {
     setAuthToken(token);
-    AsyncStorage.setItem("token", token);
+    await AsyncStorage.setItem("token", token);
   }
 
   function logout() {
     setAuthToken(null);
     AsyncStorage.removeItem("token");
   }
-
+  function getUsername(username) {
+    setUsername(username);
+  }
   const value = {
     token: authToken,
     isAuthenticated: !!authToken,
     authenticate: authenticate,
     logout: logout,
+    username: username,
+    getUsername: getUsername,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

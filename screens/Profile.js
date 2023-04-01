@@ -1,12 +1,16 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import BoldText from "../components/ui/customTexts/BoldText";
 import COLORS from "../components/ui/colors";
 import CustomButton from "../components/ui/CustomButton";
-
+import { AuthContext } from "../store/auth-context";
 const Profile = () => {
-  const name = "dummyname";
+  const authCtx = useContext(AuthContext);
+  const name = authCtx.username;
   const email = "dummyemail";
+  function logoutHandler() {
+    authCtx.logout();
+  }
   return (
     <View
       style={{ justifyContent: "center", alignItems: "center", height: "100%" }}
@@ -33,11 +37,11 @@ const Profile = () => {
       </View>
       <BoldText style={{ fontSize: 30 }}>{name}</BoldText>
       <BoldText style={{ color: COLORS.gray100, fontSize: 17, marginTop: 10 }}>
-        {email}{" "}
+        {email}
       </BoldText>
       <CustomButton
         style={{ backgroundColor: COLORS.secondary, width: 150, marginTop: 30 }}
-        onPress={{}}
+        onPress={logoutHandler}
         text={"Logout"}
         textColor={COLORS.gray500}
       />

@@ -14,17 +14,15 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const token = await login(username, password);
-
-      //      authCtx.authenticate(token);
+      const response = await login(username, password);
+      authCtx.authenticate(response.token);
+      authCtx.getUsername(response.username);
     } catch {
       setIsLoading(false);
     }
     setIsLoading(false);
   }
-  // if (authCtxToken.token) {
-  //   navigation.navigate('BottomNavigator');
-  // }
+
   return <LoginContent onAuthenticate={loginHandler} isLoading={isLoading} />;
 };
 

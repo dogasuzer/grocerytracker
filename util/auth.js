@@ -1,11 +1,10 @@
 import axios from "axios";
 import { Alert } from "react-native";
-import { BACKEND_URL_LOCAL } from "@env";
-const url = BACKEND_URL_LOCAL;
+import { BACKEND_URL_SERVER } from "@env";
+const url = BACKEND_URL_SERVER;
 
 export async function login(username, password) {
   const response = await axios
-
     .post(
       url + "users/login",
 
@@ -19,7 +18,7 @@ export async function login(username, password) {
       //
 
       if (response.status == 200) {
-        return response.data.token;
+        return response.data;
       } else {
         Alert.alert("Failed", response.data.token);
       }
