@@ -6,10 +6,10 @@ import BoldText from "../customTexts/BoldText";
 
 const ListGroceryItem = ({ groceryitem }) => {
   const itemName =
-    groceryitem[0].charAt(0).toUpperCase() + groceryitem[0].slice(1);
+    groceryitem.name.charAt(0).toUpperCase() + groceryitem.name.slice(1);
   return (
     <View style={styles.container}>
-      <GroceryItemImage item={groceryitem[0]} />
+      <GroceryItemImage item={groceryitem.name} />
       <BoldText
         style={{ width: 80, marginLeft: 20, marginRight: 10, fontSize: 16 }}
       >

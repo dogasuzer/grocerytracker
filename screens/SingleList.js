@@ -7,16 +7,16 @@ import ListGroceryItem from "../components/ui/lists/ListGroceryItem";
 
 const SingleList = ({ route }) => {
   const { item } = route.params;
-  listcontent = item.listcontent;
+  listcontent = item.content;
   return (
     <View style={styles.page}>
-      <Header text={item.listname} backgroundColor="#E76666" icon={true} />
+      <Header text={item.title} backgroundColor="#E76666" icon={true} />
       <View style={styles.container}>
         <MediumText style={styles.label}>Items</MediumText>
       </View>
-      {item.listcontent !== undefined ||
-      typeof item.listcontent !== "undefined" ||
-      item.listcontent.length() > 0
+      {listcontent !== undefined ||
+      typeof listcontent !== "undefined" ||
+      listcontent.length > 0
         ? listcontent.map((item) => {
             return <ListGroceryItem groceryitem={item} />;
           })

@@ -3,10 +3,17 @@ import { TextInput, TouchableOpacity } from "react-native";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import COLORS from "../components/ui/colors";
 import BoldText from "../components/ui/customTexts/BoldText";
+import { addNewList } from "../util/lists";
 
 const CreateGroceryList = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [text, onChangeText] = React.useState("Useless Text");
+  async function createListHandler() {
+    try {
+      await addNewList();
+      setModalVisible(!modalVisible);
+    } catch (error) {}
+  }
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -35,7 +42,7 @@ const CreateGroceryList = () => {
               </Pressable>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
+                onPress={createListHandler}
               >
                 <Text style={styles.textStyle}>Save</Text>
               </Pressable>

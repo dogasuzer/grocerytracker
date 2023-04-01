@@ -1,5 +1,5 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ListItem from "../components/ui/lists/ListItem";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../components/ui/Header";
@@ -8,31 +8,23 @@ import MediumText from "../components/ui/customTexts/MediumText";
 import { ScrollView } from "react-native";
 import BoldText from "../components/ui/customTexts/BoldText";
 import CreateGroceryList from "./CreateGroceryList";
+import { getUserLists } from "../util/lists";
+import { AuthContext } from "../store/auth-context";
 
 const Lists = () => {
-  const dummyListLists = [
-    {
-      listname: "My First List",
-      key: 1,
-      totalitem: 7,
-      registration: "2017-01-03",
-      listcontent: [
-        ["apple", 1000],
-        ["strawberry", 1300],
-      ],
-    },
-    {
-      listname: "My Second List",
-      key: 2,
-      totalitem: 9,
-      registration: "2017-01-03",
-      listcontent: [
-        ["apple", 1000],
-        ["strawberry", 1300],
-      ],
-    },
-  ];
+  const [userLists, setUserLists] = useState([]);
+  const authCtx = useContext(AuthContext);
 
+  const token = authCtx.token;
+  async function getUserListsHandler() {
+    try {
+      const response = await getUserLists(token);
+      setUserLists(response);
+    } catch (error) {}
+  }
+  useEffect(() => {
+    getUserListsHandler();
+  }, []);
   return (
     <View style={{ backgroundColor: "white", height: "100%" }}>
       <Header
@@ -52,8 +44,8 @@ const Lists = () => {
         }}
       >
         <CreateGroceryList />
-        {dummyListLists !== undefined || typeof listLists !== "undefined"
-          ? dummyListLists.map((item) => {
+        {userLists !== undefined || typeof userLists !== "undefined"
+          ? userLists.map((item) => {
               return (
                 <>
                   <ListItem item={item} />

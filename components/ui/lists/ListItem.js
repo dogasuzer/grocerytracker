@@ -23,20 +23,20 @@ const ListItem = ({ item }) => {
           style={{ margin: 20, color: COLORS.secondary200, width: 110 }}
           key={Math.random() * 1000}
         >
-          {item.listname}
+          {item !== undefined ? item.title : null}
         </BoldText>
       </TouchableOpacity>
       <BoldText
         style={{ margin: 20, color: COLORS.gray100, width: 60 }}
         key={Math.random() * 1000}
       >
-        {item.totalitem}
+        {item !== undefined ? item.content.length : null}
       </BoldText>
       <BoldText
         style={{ margin: 20, color: COLORS.gray100, width: 80 }}
         key={Math.random() * 1000}
       >
-        {item.registration}
+        {item.lastChange}
       </BoldText>
     </View>
   );
