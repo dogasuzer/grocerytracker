@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TextInput, TouchableOpacity } from "react-native";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import COLORS from "../components/ui/colors";
 import BoldText from "../components/ui/customTexts/BoldText";
 import { addNewList } from "../util/lists";
+import { AuthContext } from "../store/auth-context";
 
 const CreateGroceryList = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [text, onChangeText] = React.useState("Useless Text");
+  const [listname, setListName] = useState("");
+  const currentTime = new Date();
+  const authCtx = useContext(AuthContext);
+  const token = authCtx.token;
   async function createListHandler() {
     try {
-      await addNewList();
+      await addNewList(token, listname, currentTime);
       setModalVisible(!modalVisible);
     } catch (error) {}
   }
@@ -30,8 +34,8 @@ const CreateGroceryList = () => {
             <Text style={styles.modalText}>Name of your new list:</Text>
             <TextInput
               style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
+              onChangeText={setListName}
+              value={listname}
             />
             <View style={{ flexDirection: "row" }}>
               <Pressable
@@ -54,7 +58,7 @@ const CreateGroceryList = () => {
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}
       >
-        <BoldText style={{ color: "white" }} onPress={{}}>
+        <BoldText style={{ color: "white" }}>
           + Create a new Grocery list
         </BoldText>
       </Pressable>
@@ -101,7 +105,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: COLORS.purple100,
   },
   textStyle: {
     color: "white",

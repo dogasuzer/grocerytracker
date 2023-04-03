@@ -3,20 +3,18 @@ import { Alert } from "react-native";
 import { BACKEND_URL_LOCAL, BACKEND_URL_SERVER } from "@env";
 const url = BACKEND_URL_SERVER;
 
-export async function addNewList() {
+export async function addNewList(token, title, lastChange) {
   const response = await axios
     .post(
       url + "groceries/addList",
       {
-        title: "deneme",
+        title: title,
         content: [],
-        lastChange: "2023-02-02",
+        lastChange: lastChange,
       },
       {
         headers: {
-          Authorization:
-            `Bearer ` +
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDFiMTA4OGVjYzVlMWMxYWI3NmZkZjAiLCJ1c2VybmFtZSI6ImJlZGlyaGFuIiwiaWF0IjoxNjgwMzYzMzM5LCJleHAiOjE2ODAzNjY5Mzl9.JtZ2mC4pRyfA_xYfZNzUOjIyMxaxkCK4FSoX8ZoQTP4",
+          Authorization: `Bearer ` + token,
         },
       }
     )
