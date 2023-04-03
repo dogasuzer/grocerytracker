@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const ListItem = ({ item }) => {
   const navigation = useNavigation();
+  const dateConverter = item.lastChange.slice(0, 10);
 
   function onPressHandler() {
     navigation.navigate("SingleList", {
@@ -36,7 +37,7 @@ const ListItem = ({ item }) => {
         style={{ margin: 20, color: COLORS.gray100, width: 80 }}
         key={Math.random() * 1000}
       >
-        {item.lastChange}
+        {dateConverter}
       </BoldText>
     </View>
   );
