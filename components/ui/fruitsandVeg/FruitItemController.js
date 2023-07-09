@@ -1,19 +1,16 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-import React, { useState } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import ShopIcon from "../../../assets/icons/bag-outline.svg";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import CreateGroceryList from '../../../screens/CreateGroceryList';
+import AddGroceryItem from '../../../screens/AddGroceryItem';
 
-const FruitItemController = () => {
+const FruitItemController = ({ item }) => {
   const [counter, setCounter] = useState(1000);
   const [isOnCart, setIsOnCart] = useState([false, 0]);
   const incrementCounter = () => setCounter(counter + 100);
   let decrementCounter = () => setCounter(counter - 100);
   if (counter <= 0) {
     decrementCounter = () => setCounter(1000);
-  }
-  function addToCart() {
-    setIsOnCart([true, counter]);
-    console.log(isOnCart);
   }
   return (
     <View style={styles.controllercontainer}>
@@ -32,20 +29,15 @@ const FruitItemController = () => {
           <Text style={{ fontSize: 20 }}>+</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={addToCart}
+      <View
         style={{
-          width: 35,
-          height: 35,
-          backgroundColor: "#599F47",
-          borderRadius: 20,
-          justifyContent: "center",
-          alignItems: "center",
-          marginLeft: 5,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'pink'
         }}
       >
-        <ShopIcon width={20} height={20} color={"white"} />
-      </TouchableOpacity>
+        <AddGroceryItem counter={counter} item={item} />
+      </View>
     </View>
   );
 };
@@ -55,23 +47,23 @@ export default FruitItemController;
 const styles = StyleSheet.create({
   controllerfunc: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
   controller: {
-    flexDirection: "row",
-    backgroundColor: "#DAF2CF",
+    flexDirection: 'row',
+    backgroundColor: '#DAF2CF',
     width: 110,
     borderRadius: 40,
     height: 35,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   controllercontainer: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     maxHeight: 40,
-    width: 160,
-  },
+    width: 160
+  }
 });

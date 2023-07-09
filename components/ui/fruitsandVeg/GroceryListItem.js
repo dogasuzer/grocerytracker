@@ -1,9 +1,9 @@
-import { View, Text, ScrollView } from "react-native";
-import React from "react";
-import FruitItemController from "./FruitItemController";
-import CustomText from "../customTexts/CustomText";
-import COLORS from "../colors";
-import GroceryItemImage from "./GroceryItemImage";
+import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import FruitItemController from './FruitItemController';
+import CustomText from '../customTexts/CustomText';
+import COLORS from '../colors';
+import GroceryItemImage from './GroceryItemImage';
 
 const GroceryListItem = ({ item }) => {
   const itemName = item.name.charAt(0).toUpperCase() + item.name.slice(1);
@@ -14,11 +14,11 @@ const GroceryListItem = ({ item }) => {
         width: 170,
         height: 220,
         marginTop: 20,
-        backgroundColor: "white",
-        justifyContent: "space-evenly",
-        alignItems: "center",
+        backgroundColor: 'white',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
         elevation: 10,
-        borderRadius: 20,
+        borderRadius: 20
       }}
     >
       <GroceryItemImage item={item.name} />
@@ -27,12 +27,12 @@ const GroceryListItem = ({ item }) => {
           color: COLORS.black,
           fontSize: 35,
           minWidth: 150,
-          textAlign: "center",
+          textAlign: 'center'
         }}
       >
         {itemName}
       </CustomText>
-      <FruitItemController />
+      <FruitItemController item={item} />
     </View>
   );
 };
