@@ -1,11 +1,9 @@
 <h1 align="center">Hi 👋, I'm Doga</h1>
-<h3 align="center">This is my react native portfolio project called Grocery Tracker.</h3>
-
-- 🔭 I’m currently working on **this project.**
+<h3 align="center">This is my React native portfolio project called Grocery Tracker.</h3>
 
 <h3 align="left">About the Grocery Tracker App</h3>
 <p align="left">  
-The GroceryTracker App allows you to create and delete Grocery Lists for different events. Also you can add, update and remove items in a Grocery List.
+The GroceryTracker App allows you to create and delete Grocery Lists for different events. Also, you can add, update and remove items in a Grocery List.
 The GroceryTracker is connected to a backend server and uses MongoDB. 
 </p>
 
